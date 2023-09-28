@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Projet4" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.Projet4" parent="Base.Theme.Projet4" />
+
+    <style name="RoundedShapeAppearance.FloatingActionButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="MyFloatingActionButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/red</item>
+        <item name="android:layout_margin">40dp</item>
+        <item name="srcCompat">@drawable/ic_add_24</item>
+        <item name="tint">@color/white</item>
+
+    </style>
+
 </resources>
