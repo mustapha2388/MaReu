@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Projet4" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="toolbarStyle">@style/MyToolbar</item>
+        <item name="android:statusBarColor">@color/dark_blue</item>
     </style>
 
     <style name="Theme.Projet4" parent="Base.Theme.Projet4" />
@@ -11,12 +12,19 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
     <style name="MyFloatingActionButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="backgroundTint">@color/red</item>
         <item name="android:layout_margin">40dp</item>
         <item name="srcCompat">@drawable/ic_add_24</item>
         <item name="tint">@color/white</item>
 
+    </style>
+
+
+    <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
+       <item name="android:background">@color/blue</item>
+        <item name="android:elevation">4dp</item>
     </style>
 
 </resources>
