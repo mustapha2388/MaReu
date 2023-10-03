@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Projet 4</string>
+    <string name="app_name">Ma réu</string>
+    <string name="menu_title">menu title</string>
+    <string name="filter_by_date">Filter by date</string>
+    <string name="filter_by_place">Filter by place</string>
+    <string name="reset_list">Reset List</string>
 </resources>
