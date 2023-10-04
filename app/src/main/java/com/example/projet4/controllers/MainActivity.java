@@ -1,5 +1,9 @@
 package com.example.projet4.controllers;
 
+import static com.example.projet4.utils.Utils.getJsonFromAssets;
+import static com.example.projet4.utils.Utils.jsonFileName;
+import static com.example.projet4.utils.Utils.parseJsonToMeetings;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,20 +13,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.projet4.R;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.projet4.Models.Meeting;
+import com.example.projet4.R;
 import com.example.projet4.adapters.MeetingAdapter;
 import com.example.projet4.databinding.ActivityMainBinding;
+import com.example.projet4.models.Meeting;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,9 +40,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mBinding.toolbar.getRoot());
         mBinding.toolbar.getRoot().setPopupTheme(R.style.myPopupTheme);
         setupListener();
-        initMeetings();
+
+        if (checkAssetsAreAvailable()) {
+            initMeetings();
+        }
+
         initRecyclerView();
 
+    }
+
+    private boolean checkAssetsAreAvailable() {
+        try {
+            return getAssets().open(jsonFileName).available() > 0;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initRecyclerView() {
@@ -62,20 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMeetings() {
 
-        Date hour_meeting_1 = new Date();
-        Date hour_meeting_2 = new Date();
-        Date hour_meeting_3 = new Date();
-
-
-        hour_meeting_1.setTime(57600000);
-        hour_meeting_2.setTime(50400000);
-        hour_meeting_3.setTime(0);
-
-        meetings = new ArrayList<>(Arrays.asList(
-                new Meeting(-25143, "Réunion A", hour_meeting_1, "Peach", new ArrayList<>(Collections.singleton("maxime@lamzone.com, alex@lamzome.com"))),
-                new Meeting(-61180, "Réunion B", hour_meeting_2, "Mario", new ArrayList<>(Collections.singleton("paul@lamzome.com, viviane@lamzone.com"))),
-                new Meeting(-16580839, "Réunion C", hour_meeting_3, "Luigi", new ArrayList<>(Collections.singleton("amandine@lamzome.com, luc@lamzone.com"))))
-        );
+        String meetingsDataFromJsonStr = getJsonFromAssets(this);
+        meetings = parseJsonToMeetings(meetingsDataFromJsonStr);
     }
 
     private void setupListener() {

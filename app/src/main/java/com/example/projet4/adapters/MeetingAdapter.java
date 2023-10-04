@@ -1,22 +1,16 @@
 package com.example.projet4.adapters;
 
-import android.os.Build;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projet4.Models.Meeting;
-import com.example.projet4.R;
 import com.example.projet4.databinding.MeetingItemBinding;
+import com.example.projet4.models.Meeting;
 
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingViewHolder> {
 
