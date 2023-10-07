@@ -1,5 +1,8 @@
 package com.example.projet4.adapters;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,16 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet4.databinding.MeetingItemBinding;
 import com.example.projet4.models.Meeting;
+import com.example.projet4.services.OnMeetingListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingViewHolder> {
 
-    private List<Meeting> meetings;
+    private final List<Meeting> meetings;
+    private final OnMeetingListener OnMeetingListener;
 
-    public MeetingAdapter(ArrayList<Meeting> meetings) {
+    public MeetingAdapter(ArrayList<Meeting> meetings, OnMeetingListener OnMeetingListener) {
         this.meetings = meetings;
+        this.OnMeetingListener = OnMeetingListener;
     }
 
     @NonNull
@@ -31,7 +37,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
 
     @Override
     public void onBindViewHolder(@NonNull MeetingAdapter.MeetingViewHolder holder, int position) {
-        holder.displayMeeting(meetings.get(position));
+        holder.displayMeeting(meetings.get(position), OnMeetingListener);
     }
 
     @Override
@@ -47,7 +53,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
             this.mMeetingItemBinding = binding;
         }
 
-        public void displayMeeting(Meeting meeting) {
+        public void displayMeeting(Meeting meeting, OnMeetingListener OnMeetingListener) {
             mMeetingItemBinding.infoHeaderMeeting.setText(meeting.getSubject());
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 mMeetingItemBinding.emails.setText(String.join(", ", meeting.getEmails()));
@@ -58,6 +64,10 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
 
                 }
             }
+            mMeetingItemBinding.trash.setOnClickListener(view -> {
+                Log.i(TAG, "displayMeeting: trash");
+                OnMeetingListener.onItemClick(meeting);
+            });
         }
     }
 }

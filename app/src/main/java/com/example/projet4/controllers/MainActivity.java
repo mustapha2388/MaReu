@@ -1,10 +1,8 @@
 package com.example.projet4.controllers;
 
-import static com.example.projet4.utils.Utils.getJsonFromAssets;
+import static com.example.projet4.services.DummyMeetingGenerator.resetDummyMeeting;
 import static com.example.projet4.utils.Utils.jsonFileName;
-import static com.example.projet4.utils.Utils.parseJsonToMeetings;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -20,15 +19,20 @@ import com.example.projet4.R;
 import com.example.projet4.adapters.MeetingAdapter;
 import com.example.projet4.databinding.ActivityMainBinding;
 import com.example.projet4.models.Meeting;
+import com.example.projet4.services.OnMeetingListener;
+import com.example.projet4.viewModel.MeetingViewModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMeetingListener {
 
     private ActivityMainBinding mBinding;
-    private ArrayList<Meeting> meetings;
-    private MeetingAdapter adapter;
+
+    private MeetingViewModel mMeetingViewModel;
+
+    private ArrayList<Meeting> meetings = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(mBinding.toolbar.getRoot());
         mBinding.toolbar.getRoot().setPopupTheme(R.style.myPopupTheme);
+
         setupListener();
 
         if (checkAssetsAreAvailable()) {
-            initMeetings();
+            initViewModel();
+            initDummyMeeting();
+            getMeetingListFromService();
         }
-
-        initRecyclerView();
-
     }
 
     private boolean checkAssetsAreAvailable() {
@@ -55,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void initViewModel() {
+        mMeetingViewModel = new ViewModelProvider(this).get(MeetingViewModel.class);
     }
 
     private void initRecyclerView() {
@@ -68,20 +76,27 @@ public class MainActivity extends AppCompatActivity {
 
         mBinding.recyclerView.addItemDecoration(dividerItemDecoration);
 
-        adapter = new MeetingAdapter(meetings); // meetings is your list of meetings
+        MeetingAdapter adapter = new MeetingAdapter(meetings, this);
         mBinding.recyclerView.setAdapter(adapter);
     }
 
-    private void initMeetings() {
+    private void initDummyMeeting() {
+        mMeetingViewModel.initDummyMeeting(this);
+    }
 
-        String meetingsDataFromJsonStr = getJsonFromAssets(this);
-        meetings = parseJsonToMeetings(meetingsDataFromJsonStr);
+    private void getMeetingListFromService() {
+        mMeetingViewModel.allMeetingsLiveData().observe(this, m -> {
+            meetings = new ArrayList<>(m);
+            initRecyclerView();
+        });
     }
 
     private void setupListener() {
         mBinding.addButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddMeetingActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(this, AddMeetingActivity.class);
+//            startActivity(intent);
+
+            mMeetingViewModel.insert(new Meeting(1, "test", new Date(), "roomTest", new ArrayList<>()));
         });
     }
 
@@ -107,6 +122,17 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        resetDummyMeeting(this);
+    }
+
+    @Override
+    public void onItemClick(Meeting itemMeeting) {
+        Toast.makeText(this, "Meeting:" + itemMeeting.getSubject() + " deleted", Toast.LENGTH_SHORT).show();
+        mMeetingViewModel.delete(itemMeeting);
     }
 }

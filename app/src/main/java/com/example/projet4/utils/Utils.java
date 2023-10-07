@@ -2,6 +2,7 @@ package com.example.projet4.utils;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.projet4.models.Meeting;
 import com.google.gson.JsonArray;
@@ -14,7 +15,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Utils {
 
@@ -29,8 +29,12 @@ public class Utils {
 
             int size = is.available();
             byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+            int byteRead = is.read(buffer);
+            if (byteRead != -1) {
+                is.close();
+            } else {
+                Toast.makeText(context, "Error during reading of json file", Toast.LENGTH_SHORT).show();
+            }
 
             jsonString = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) {
