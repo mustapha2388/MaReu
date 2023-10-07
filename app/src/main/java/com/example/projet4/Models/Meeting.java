@@ -1,4 +1,6 @@
-package com.example.projet4.Models;
+package com.example.projet4.models;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,6 +61,7 @@ public class Meeting {
         this.emails = emails;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Meeting{" +

@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "color": -25143,
+      "subject": "Réunion A",
+      "hour": 57600000,
+      "room": "Peach",
+      "emails": [
+        "maxime@lamzone.com",
+        "alex@lamzome.com"
+      ]
+    },
+    {
+      "color": -61180,
+      "subject": "Réunion B",
+      "hour": 50400000,
+      "room": "Mario",
+      "emails": [
+        "paul@lamzome.com",
+        "viviane@lamzone.com"
+      ]
+    },
+    {
+      "color": -16580839,
+      "subject": "Réunion C",
+      "hour": 0,
+      "room": "Luigi",
+      "emails": [
+        "amandine@lamzome.com, luc@lamzone.com"
+      ]
+    }
+  ]
+}
+
