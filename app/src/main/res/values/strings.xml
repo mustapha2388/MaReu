@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Ma réu</string>
     <string name="menu_title">menu title</string>
-    <string name="filter_by_date">Filter by date</string>
-    <string name="filter_by_place">Filter by place</string>
+    <string name="filter_by_hour">Filter by hour</string>
+    <string name="filter_by_room">Filter by room</string>
     <string name="reset_list">Reset List</string>
 </resources>

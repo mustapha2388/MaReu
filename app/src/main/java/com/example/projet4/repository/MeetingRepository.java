@@ -8,6 +8,7 @@ import com.example.projet4.DI.DI;
 import com.example.projet4.models.Meeting;
 import com.example.projet4.services.MeetingApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingRepository {
@@ -37,4 +38,11 @@ public class MeetingRepository {
         mApiService.initDummyMeeting(context);
     }
 
+    public ArrayList<Meeting> filterByRoom(String room) {
+        return mApiService.filterByRoom(room);
+    }
+
+    public ArrayList<Meeting> filterByHour(long hour) {
+        return mApiService.filterByHour(hour);
+    }
 }

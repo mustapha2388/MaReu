@@ -6,17 +6,24 @@ import androidx.lifecycle.LiveData;
 
 import com.example.projet4.models.Meeting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface MeetingApiService {
 
     /**
      * Get all my Neighbours
+     *
      * @return {@link List}
      */
     LiveData<List<Meeting>> getAllMeetingsLiveData();
-    void  insert(Meeting meeting);
+
+    void insert(Meeting meeting);
 
     void delete(Meeting meeting);
+
     void initDummyMeeting(Context context);
+
+    ArrayList<Meeting> filterByRoom(String room);
+    ArrayList<Meeting> filterByHour(long hour);
 }

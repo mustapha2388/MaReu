@@ -19,6 +19,9 @@ import java.util.Date;
 public class Utils {
 
     public static final String jsonFileName = "meetings.json";
+    public static final String FILTER_BY_ROOM = "FILTER_BY_ROOM";
+    public static final String FILTER_BY_HOUR = "FILTER_BY_HOUR";
+    public static final String FILTER_RESET = "FILTER_RESET";
 
     public static String getJsonFromAssets(Context context) {
         String jsonString;
