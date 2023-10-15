@@ -1,9 +1,12 @@
-package com.example.projet4.controllers;
+package com.example.projet4.controllers.ui;
 
 import static com.example.projet4.services.DummyMeetingGenerator.resetDummyMeeting;
+import static com.example.projet4.utils.Utils.convertTimeToMillis;
+import static com.example.projet4.utils.Utils.createTimerPicker;
 import static com.example.projet4.utils.Utils.jsonFileName;
-import static com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK;
+import static com.example.projet4.utils.Utils.showPicker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,11 +30,9 @@ import com.example.projet4.models.Meeting;
 import com.example.projet4.services.OnMeetingListener;
 import com.example.projet4.viewModel.MeetingViewModel;
 import com.google.android.material.timepicker.MaterialTimePicker;
-import com.google.android.material.timepicker.TimeFormat;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements OnMeetingListener {
 
@@ -106,10 +107,10 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
 
     private void setupListener() {
         mBinding.addButton.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, AddMeetingActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(this, AddMeetingActivity.class);
+            startActivity(intent);
 
-            mMeetingViewModel.insert(new Meeting(1, "test", new Date(), "roomTest", new ArrayList<>()));
+//            mMeetingViewModel.insert(new Meeting(1, "test", new Date(), "roomTest", new ArrayList<>()));
         });
     }
 
@@ -126,10 +127,11 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
         int id = item.getItemId();
         meetings.clear();
 
+        //TODO refacto with item_filter_by_date
         if (id == R.id.item_filter_by_date) {
 
             MaterialTimePicker picker = createTimerPicker();
-            showPicker(picker);
+            showPicker(getSupportFragmentManager(),picker);
             setupListenerPicker(picker);
 
         } else if (id == R.id.item_filter_by_place) {
@@ -139,9 +141,7 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
             setupListenerListView();
 
         } else if (id == R.id.item_filter_reset) {
-
-            mMeetingViewModel.allMeetingsLiveData().observe(this, m -> meetings.addAll(m));
-            adapter.notifyDataSetChanged();
+            resetDummyMeeting(this);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -190,14 +190,6 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
         Toast.makeText(this, "Selected: " + message, Toast.LENGTH_SHORT).show();
     }
 
-    private MaterialTimePicker createTimerPicker() {
-        return new MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).setHour(15).setMinute(0).setTitleText("Select meeting time").setInputMode(INPUT_MODE_CLOCK).build();
-    }
-
-    private void showPicker(MaterialTimePicker picker) {
-        picker.show(getSupportFragmentManager(), "timePickerTag");
-    }
-
     private void setupListenerPicker(MaterialTimePicker picker) {
         picker.addOnPositiveButtonClickListener(view -> {
             int hour = picker.getHour();
@@ -207,10 +199,6 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
             adapter.notifyDataSetChanged();
 
         });
-    }
-
-    public long convertTimeToMillis(int hour, int minute) {
-        return ((hour * 60L + minute) * 60L * 1000L) - 3600000L; // Subtract 1 hour (3600000 milliseconds)
     }
 
     @Override

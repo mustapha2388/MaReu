@@ -2,6 +2,8 @@ package com.example.projet4.adapters;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import static com.example.projet4.utils.Utils.getInfoMeeting;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -54,12 +56,15 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
         }
 
         public void displayMeeting(Meeting meeting, OnMeetingListener OnMeetingListener) {
-            mMeetingItemBinding.infoHeaderMeeting.setText(meeting.getSubject());
+            String info = getInfoMeeting(meeting);
+            mMeetingItemBinding.infoHeaderMeeting.setText(info);
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                mMeetingItemBinding.emails.setText(String.join(", ", meeting.getEmails()));
 
+                mMeetingItemBinding.circle.setColorFilter(meeting.getColor());
+                mMeetingItemBinding.emails.setText(String.join(", ", meeting.getEmails()));
             } else {
                 for (String email : meeting.getEmails()) {
+                    mMeetingItemBinding.circle.setColorFilter(meeting.getColor());
                     mMeetingItemBinding.emails.setText(email);
 
                 }
