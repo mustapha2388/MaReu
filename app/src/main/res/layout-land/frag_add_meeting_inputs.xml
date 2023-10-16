@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controllers.fragments.AddMeetingInputsFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/subject"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Subject"
+            app:boxStrokeColor="@color/blue"
+            app:startIconDrawable="@drawable/ic_baseline_meeting_room"
+            app:startIconTint="@color/blue"
+            app:hintTextColor="@color/blue">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emails"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Emails"
+            app:boxStrokeColor="@color/blue"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/blue"
+            app:hintTextColor="@color/blue"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:lines="7"
+                android:maxLines="10"
+                android:minLines="3"
+                android:scrollbars="vertical" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/insert_meeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save meeting"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blue"
+            app:cornerRadius="10dp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</FrameLayout>

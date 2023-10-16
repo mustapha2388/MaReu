@@ -23,26 +23,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:weightSum="2"
+            android:layout_gravity="center"
             >
+
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_container_view_part_1"
                 android:name="com.example.projet4.controllers.fragments.AddMeetingButtonsFragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.8"
                 tools:layout="@layout/frag_add_meeting_buttons" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_container_view_part_2"
                 android:name="com.example.projet4.controllers.fragments.AddMeetingInputsFragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1.2"
                 tools:layout="@layout/frag_add_meeting_inputs" />
         </androidx.appcompat.widget.LinearLayoutCompat>
