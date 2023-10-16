@@ -58,6 +58,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="@string/rooms"
                 android:inputType="none"
+                android:saveEnabled="false"
                 app:simpleItems="@array/my_string_array" />
 
         </com.google.android.material.textfield.TextInputLayout>

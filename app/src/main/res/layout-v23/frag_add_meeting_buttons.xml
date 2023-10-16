@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 app:boxStrokeColor="@color/blue"
                 app:hintTextColor="@color/blue"
+                android:saveEnabled="false"
                 app:startIconDrawable="@drawable/ic_baseline_meeting_room"
                 app:startIconTint="@color/blue">
 
@@ -58,8 +59,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:inputType="none"
-                    android:hint="@string/rooms"
-                    app:simpleItems="@array/my_string_array" />
+                    android:saveEnabled="false"
+                    android:hint="@string/rooms" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -59,6 +59,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:hint="@string/rooms"
+                    android:saveEnabled="false"
                     android:inputType="none"
                     app:simpleItems="@array/my_string_array" />
 
