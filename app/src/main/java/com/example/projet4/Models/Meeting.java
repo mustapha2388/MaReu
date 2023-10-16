@@ -13,6 +13,9 @@ public class Meeting {
     private String room;
     private ArrayList<String> emails;
 
+    public Meeting() {
+    }
+
     public Meeting(int color, String subject, Date hour, String room, ArrayList<String> emails) {
         this.color = color;
         this.subject = subject;

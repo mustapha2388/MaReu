@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.example.projet4.models.Meeting;
 import com.example.projet4.repository.MeetingRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MeetingViewModel extends AndroidViewModel {
@@ -35,5 +36,13 @@ public class MeetingViewModel extends AndroidViewModel {
     }
     public void initDummyMeeting(Context context) {
         mRepository.initDummyMeeting(context);
+    }
+
+    public ArrayList<Meeting> filterByRoom(String room){
+        return  mRepository.filterByRoom(room);
+    }
+
+    public ArrayList<Meeting> filterByHour(long hour){
+        return  mRepository.filterByHour(hour);
     }
 }
