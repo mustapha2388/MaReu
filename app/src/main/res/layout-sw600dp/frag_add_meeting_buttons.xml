@@ -17,7 +17,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="30dp"
-            android:contentDescription="button color picker"
+            android:background="@color/red"
+            android:contentDescription="@string/color_picker_for_choose_color"
             android:labelFor="@id/colorPickerButton" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -33,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:drawableStart="@drawable/ic_time"
-                android:drawableTint="@color/blue"
-                android:text="Set time"
+                app:drawableTint="@color/blue"
+                android:text="@string/set_time"
                 android:textColor="@color/blue"
                 android:textStyle="bold" />
 
@@ -50,6 +51,7 @@
                 android:layout_height="wrap_content"
                 app:boxStrokeColor="@color/blue"
                 app:hintTextColor="@color/blue"
+                android:contentDescription="@string/select_a_room"
                 app:startIconDrawable="@drawable/ic_baseline_meeting_room"
                 app:startIconTint="@color/blue">
 

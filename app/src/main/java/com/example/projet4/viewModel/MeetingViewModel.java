@@ -15,7 +15,7 @@ import java.util.List;
 public class MeetingViewModel extends AndroidViewModel {
 
     private final LiveData<List<Meeting>> allMeetings;
-    private MeetingRepository mRepository;
+    private final MeetingRepository mRepository;
 
     public MeetingViewModel(Application application) {
         super(application);

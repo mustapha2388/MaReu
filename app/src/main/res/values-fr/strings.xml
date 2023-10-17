@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Ma réu</string>
+    <string name="menu_title">menu titre</string>
+    <string name="filter_by_hour">Filtrer par heure</string>
+    <string name="filter_by_room">Filtrer par salle</string>
+    <string name="reset_list">Effacer filtre</string>
+
+    <string name="rooms">Salles</string>
+    <string name="select_a_room_from_the_list">Selectionnez une salle dans la liste</string>
+    <string name="set_time">Régler l\'heure</string>
+    <string name="color_picker_for_choose_color">color picker pour choisir une couleur</string>
+    <string name="select_a_room">Selectionnez une salle</string>
+    <string name="subject">Sujet</string>
+    <string name="emails">Emails</string>
+    <string name="insert_meeting">Insérer réunion</string>
+</resources>

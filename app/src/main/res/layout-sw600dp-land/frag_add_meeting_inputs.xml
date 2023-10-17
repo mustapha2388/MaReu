@@ -16,15 +16,16 @@
             android:id="@+id/subject"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Subject"
+            android:hint="@string/subject"
             app:boxStrokeColor="@color/blue"
+            app:hintTextColor="@color/blue"
             app:startIconDrawable="@drawable/ic_baseline_meeting_room"
-            app:startIconTint="@color/blue"
-            app:hintTextColor="@color/blue">
+            app:startIconTint="@color/blue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -36,12 +37,11 @@
             android:id="@+id/emails"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="Emails"
+            android:hint="@string/emails"
             app:boxStrokeColor="@color/blue"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/blue"
             app:hintTextColor="@color/blue"
-            >
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/blue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -52,7 +52,8 @@
                 android:lines="7"
                 android:maxLines="10"
                 android:minLines="3"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,12 +65,11 @@
             android:id="@+id/insert_meeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save meeting"
+            android:text="@string/insert_meeting"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:backgroundTint="@color/blue"
-            app:cornerRadius="10dp"
-            />
+            app:cornerRadius="10dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </FrameLayout>

@@ -1,7 +1,6 @@
 package com.example.projet4.adapters;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import static com.example.projet4.utils.Utils.getInfoMeeting;
 
 import android.util.Log;

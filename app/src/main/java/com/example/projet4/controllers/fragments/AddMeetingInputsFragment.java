@@ -6,8 +6,6 @@ import static com.example.projet4.utils.Utils.setupTextInputLayoutTextWatcher;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import com.example.projet4.R;
 import com.example.projet4.databinding.FragAddMeetingInputsBinding;
 import com.example.projet4.models.Meeting;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -79,9 +76,7 @@ public class AddMeetingInputsFragment extends Fragment {
     }
 
     private void setupButtonListener() {
-        bindingInputsFrag.insertMeeting.setOnClickListener(view -> {
-            clickListener.onClickListener();
-        });
+        bindingInputsFrag.insertMeeting.setOnClickListener(view -> clickListener.onClickListener());
 
     }
 
