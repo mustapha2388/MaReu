@@ -26,7 +26,6 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,14 +33,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
 public class Utils {
 
     public static final String jsonFileName = "meetings.json";
-    public static final String FILTER_BY_ROOM = "FILTER_BY_ROOM";
-    public static final String FILTER_BY_HOUR = "FILTER_BY_HOUR";
-    public static final String FILTER_RESET = "FILTER_RESET";
 
     public static String getJsonFromAssets(Context context) {
         String jsonString;

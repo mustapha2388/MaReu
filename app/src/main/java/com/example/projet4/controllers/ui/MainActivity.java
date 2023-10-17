@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import com.google.android.material.timepicker.MaterialTimePicker;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@SuppressWarnings("notifyDataSetChanged")
 public class MainActivity extends AppCompatActivity implements OnMeetingListener {
 
     private ActivityMainBinding mBinding;
@@ -109,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
         mBinding.addButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddMeetingActivity.class);
             startActivity(intent);
-
-//            mMeetingViewModel.insert(new Meeting(1, "test", new Date(), "roomTest", new ArrayList<>()));
         });
     }
 
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
         if (id == R.id.item_filter_by_date) {
 
             MaterialTimePicker picker = createTimerPicker();
-            showPicker(getSupportFragmentManager(),picker);
+            showPicker(getSupportFragmentManager(), picker);
             setupListenerPicker(picker);
 
         } else if (id == R.id.item_filter_by_place) {
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
 
     private void initListView() {
         LayoutInflater inflater = getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.dialog_list, null);
+        dialogView = inflater.inflate(R.layout.dialog_list, (ViewGroup) null, false);
 
         // Get a reference to the ListView from the dialogView
         listView = dialogView.findViewById(R.id.listView);
