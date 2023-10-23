@@ -17,9 +17,9 @@ public class MeetingViewModel extends AndroidViewModel {
     private final LiveData<List<Meeting>> allMeetings;
     private final MeetingRepository mRepository;
 
-    public MeetingViewModel(Application application) {
+    public MeetingViewModel(Application application, MeetingRepository mRepository) {
         super(application);
-        mRepository = new MeetingRepository();
+        this.mRepository = mRepository;
         allMeetings = mRepository.allMeetingsLiveData();
     }
 
@@ -34,15 +34,16 @@ public class MeetingViewModel extends AndroidViewModel {
     public void delete(Meeting meeting) {
         mRepository.delete(meeting);
     }
+
     public void initDummyMeeting(Context context) {
         mRepository.initDummyMeeting(context);
     }
 
-    public ArrayList<Meeting> filterByRoom(String room){
-        return  mRepository.filterByRoom(room);
+    public ArrayList<Meeting> filterByRoom(String room) {
+        return mRepository.filterByRoom(room);
     }
 
-    public ArrayList<Meeting> filterByHour(long hour){
-        return  mRepository.filterByHour(hour);
+    public ArrayList<Meeting> filterByHour(long hour) {
+        return mRepository.filterByHour(hour);
     }
 }

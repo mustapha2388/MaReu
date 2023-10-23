@@ -92,14 +92,14 @@ public class AddMeetingInputsFragment extends Fragment {
 
     private void updateUIError() {
         if (Objects.requireNonNull(bindingInputsFrag.subject.getEditText()).getText().toString().equals("")) {
-            bindingInputsFrag.subject.setError("*Field necessary");
+            bindingInputsFrag.subject.setError(getString(R.string.field_necessary));
             bindingInputsFrag.subject.setStartIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         }
         if (Objects.requireNonNull(bindingInputsFrag.emails.getEditText()).getText().toString().equals("")) {
-            bindingInputsFrag.emails.setError("*Field necessary");
+            bindingInputsFrag.emails.setError(getString(R.string.field_necessary));
             bindingInputsFrag.emails.setStartIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         } else if (!AreEmailValid(bindingInputsFrag.emails)) {
-            bindingInputsFrag.emails.setError("*Invalid email address");
+            bindingInputsFrag.emails.setError(getString(R.string.email_invalid));
             bindingInputsFrag.emails.setStartIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         }
     }

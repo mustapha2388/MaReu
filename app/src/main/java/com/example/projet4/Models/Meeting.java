@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Meeting {
 
@@ -74,5 +75,21 @@ public class Meeting {
                 ", room='" + room + '\'' +
                 ", emails=" + emails +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Meeting meeting = (Meeting) o;
+        return getColor() == meeting.getColor() &&
+                getHour().equals(meeting.getHour()) &&
+                getRoom().equals(meeting.getRoom()) &&
+                getEmails().equals(meeting.getEmails());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getColor(), getHour(), getRoom(), getEmails());
     }
 }

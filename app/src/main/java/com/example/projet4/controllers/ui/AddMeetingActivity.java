@@ -18,6 +18,7 @@ import com.example.projet4.controllers.fragments.AddMeetingButtonsFragment;
 import com.example.projet4.controllers.fragments.AddMeetingInputsFragment;
 import com.example.projet4.databinding.ActivityAddMeetingBinding;
 import com.example.projet4.models.Meeting;
+import com.example.projet4.repository.MeetingRepository;
 import com.example.projet4.viewModel.MeetingViewModel;
 
 public class AddMeetingActivity extends AppCompatActivity implements AddMeetingInputsFragment.ClickListener, AddMeetingButtonsFragment.DataPassListener, AddMeetingInputsFragment.ClickListenerSavaData {
@@ -47,7 +48,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AddMeetingI
     }
 
     private void initViewModel() {
-        mMeetingViewModel = new ViewModelProvider(this).get(MeetingViewModel.class);
+        MeetingViewModelFactory viewModelFactory = new MeetingViewModelFactory(getApplication(), new MeetingRepository());
+        mMeetingViewModel = new ViewModelProvider(this, viewModelFactory).get(MeetingViewModel.class);
     }
 
     private void setupFragment() {

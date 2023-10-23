@@ -1,9 +1,7 @@
 package com.example.projet4.adapters;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import static com.example.projet4.utils.Utils.getInfoMeeting;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -68,10 +66,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingV
 
                 }
             }
-            mMeetingItemBinding.trash.setOnClickListener(view -> {
-                Log.i(TAG, "displayMeeting: trash");
-                OnMeetingListener.onItemClick(meeting);
-            });
+            mMeetingItemBinding.trash.setOnClickListener(view -> OnMeetingListener.onItemClick(meeting));
         }
     }
 }

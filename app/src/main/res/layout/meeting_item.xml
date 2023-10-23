@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/baseline_delete_black_24"
         android:backgroundTint="@color/transparent"
-        android:contentDescription="TODO"
+        android:contentDescription="My trash"
         app:tint="@color/grey" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
