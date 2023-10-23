@@ -16,15 +16,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -41,28 +37,16 @@ import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.projet4.controllers.ui.MainActivity;
-import com.example.projet4.models.Meeting;
-import com.example.projet4.repository.MeetingRepository;
-import com.example.projet4.viewModel.MeetingViewModel;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -80,101 +64,8 @@ public class ExampleInstrumentedTest {
     public ActivityScenarioRule<MainActivity> rule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-
-    private MeetingRepository mMeetingRepository;
-    private MeetingViewModel mMeetingViewModel;
-
-    private Meeting meeting;
-
     private final int NUMBER_OF_MEETINGS = 3;
 
-    @Test
-    @Before
-    @Ignore("skip")
-    public void setup() throws Throwable {
-
-
-        mMeetingRepository = new MeetingRepository();
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-
-//        runOnUiThread(() -> mMeetingRepository.initDummyMeeting(appContext));
-//
-//        initMeeting();
-//
-//
-//        ActivityScenario<MainActivity> scenario = rule.getScenario();
-//
-//        scenario.onActivity(activity -> {
-//
-//            mMeetingViewModel = new MeetingViewModel(activity.getApplication());
-//        });
-
-    }
-
-    private void initMeeting() {
-        Date hourMeeting = new Date();
-        hourMeeting.setTime(57600000);
-        meeting = new Meeting(-61180, "Réunion D", hourMeeting, "Mario", new ArrayList<>(Collections.singleton("test@lamzome.com, test1@lamzone.com")));
-    }
-
-
-    @Test
-    @Ignore("skip")
-    public void getAllMeetingToRepository() {
-        List<Meeting> listMeetings = Objects.requireNonNull(mMeetingViewModel.allMeetingsLiveData().getValue());
-        assertEquals(NUMBER_OF_MEETINGS, listMeetings.size());
-    }
-
-    @Test
-    @Ignore("skip")
-    public void addMeetingToRepository() {
-
-        onView(withId(R.id.recyclerView)).check(matches(isDisplayed())).check(matches(hasChildCount(NUMBER_OF_MEETINGS)));
-
-        onView(withId(R.id.addButton)).perform(click());
-
-        onView(withId(R.id.addMeetingActivity)).check(matches(isDisplayed()));
-
-        onView(withId(R.id.set_time)).check(matches(isDisplayed()));
-
-//        runOnUiThread(() -> {
-//
-//            List<Meeting> listMeetingsBeforeInsert = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue());
-//            assertEquals(NUMBER_OF_MEETINGS, listMeetingsBeforeInsert.size());
-//
-//            // Update LiveData here
-//            mMeetingViewModel.insert(meeting);
-//            // Assert: Verify that the meeting was added successfully
-//            Meeting meetingAdded = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue()).get(3);
-//            assertNotNull(meetingAdded);
-//            assertEquals(meeting, meetingAdded);
-//
-//            List<Meeting> listMeetingsAfterInsert = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue());
-//            assertEquals(NUMBER_OF_MEETINGS + 1, listMeetingsAfterInsert.size());
-//        });
-
-    }
-
-
-    @Test
-    @Ignore("skip")
-    public void deleteMeetingToRepository() throws Throwable {
-
-        runOnUiThread(() -> {
-
-            List<Meeting> listMeetingsBeforeDelete = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue());
-            assertEquals(NUMBER_OF_MEETINGS, listMeetingsBeforeDelete.size());
-
-            Meeting meeting = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue()).get(0);
-            // Update LiveData here
-            mMeetingViewModel.delete(meeting);
-
-
-            List<Meeting> listMeetingsAfterDelete = Objects.requireNonNull(mMeetingRepository.allMeetingsLiveData().getValue());
-            assertEquals(NUMBER_OF_MEETINGS - 1, listMeetingsAfterDelete.size());
-            assertFalse(listMeetingsAfterDelete.contains(meeting));
-        });
-    }
 
     @Test
     public void deleteMeeting() {
@@ -383,7 +274,7 @@ public class ExampleInstrumentedTest {
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {
-                //description.appendText("Child at position " + position + " in parent ");
+                description.appendText("Child at position " + position + " in parent ");
                 parentMatcher.describeTo(description);
             }
 

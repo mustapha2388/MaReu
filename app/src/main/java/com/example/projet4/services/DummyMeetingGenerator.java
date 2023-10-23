@@ -29,7 +29,6 @@ public class DummyMeetingGenerator {
 
     public static void resetDummyMeeting(Context context) {
         initDummyMeeting(context);
-//        meetingsLiveData.setValue(DUMMY_MEETINGS);
     }
 
     public static void initDummyMeeting(Context context) {

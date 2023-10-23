@@ -15,7 +15,6 @@ import com.example.projet4.repository.MeetingRepository;
 import com.example.projet4.viewModel.MeetingViewModel;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;

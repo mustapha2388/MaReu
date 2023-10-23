@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.projet4.DI.DI;
 import com.example.projet4.models.Meeting;
-import com.example.projet4.services.DummyMeetingApiService;
 import com.example.projet4.services.MeetingApiService;
 
 import java.util.ArrayList;

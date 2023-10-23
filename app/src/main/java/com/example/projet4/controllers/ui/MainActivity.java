@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -29,7 +28,6 @@ import com.example.projet4.adapters.MeetingAdapter;
 import com.example.projet4.databinding.ActivityMainBinding;
 import com.example.projet4.models.Meeting;
 import com.example.projet4.repository.MeetingRepository;
-import com.example.projet4.services.DummyMeetingApiService;
 import com.example.projet4.services.OnMeetingListener;
 import com.example.projet4.viewModel.MeetingViewModel;
 import com.google.android.material.timepicker.MaterialTimePicker;
@@ -80,12 +78,10 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
     }
 
     private void initViewModel() {
-//        MeetingRepository meetingRepository = new MeetingRepository();
-//
-//        // Initialisez le MeetingViewModel en utilisant la ViewModelFactory personnalisée
+
+        // Initialisez le MeetingViewModel en utilisant la ViewModelFactory personnalisée
         MeetingViewModelFactory viewModelFactory = new MeetingViewModelFactory(getApplication(), new MeetingRepository());
         mMeetingViewModel = new ViewModelProvider(this, viewModelFactory).get(MeetingViewModel.class);
-//        mMeetingViewModel = new ViewModelProvider(this).get(MeetingViewModel.class);
     }
 
     private void initRecyclerView() {
@@ -162,8 +158,9 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
     }
 
     private void initListView() {
+
         LayoutInflater inflater = getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.dialog_list, (ViewGroup) null, false);
+        dialogView = inflater.inflate(R.layout.dialog_list, mBinding.getRoot(), false);
 
         // Get a reference to the ListView from the dialogView
         listView = dialogView.findViewById(R.id.listView);
@@ -220,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements OnMeetingListener
 
     @Override
     public void onItemClick(Meeting itemMeeting) {
-        Toast.makeText(this, "Meeting:" + itemMeeting.getSubject() + " deleted", Toast.LENGTH_SHORT).show();
         mMeetingViewModel.delete(itemMeeting);
     }
 }

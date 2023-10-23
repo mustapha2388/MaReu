@@ -3,6 +3,7 @@ package com.example.projet4.DI;
 import com.example.projet4.services.DummyMeetingApiService;
 import com.example.projet4.services.MeetingApiService;
 
+@SuppressWarnings("unused")
 public class DI {
 
     private static final MeetingApiService service = new DummyMeetingApiService();

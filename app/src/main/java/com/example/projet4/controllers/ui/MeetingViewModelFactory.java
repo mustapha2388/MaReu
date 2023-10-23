@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.projet4.repository.MeetingRepository;
 import com.example.projet4.viewModel.MeetingViewModel;
 
+@SuppressWarnings("unchecked")
 public class MeetingViewModelFactory implements ViewModelProvider.Factory {
     private final Application application;
     private final MeetingRepository meetingRepository;

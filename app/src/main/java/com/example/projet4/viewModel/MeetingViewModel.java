@@ -19,7 +19,6 @@ public class MeetingViewModel extends AndroidViewModel {
 
     public MeetingViewModel(Application application, MeetingRepository mRepository) {
         super(application);
-//        this.mRepository = new MeetingRepository();
         this.mRepository = mRepository;
         allMeetings = mRepository.allMeetingsLiveData();
     }

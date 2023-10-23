@@ -13,4 +13,6 @@
     <string name="subject">Sujet</string>
     <string name="emails">Emails</string>
     <string name="insert_meeting">Insérer réunion</string>
+    <string name="field_necessary">*Field necessary</string>
+    <string name="email_invalid">*Invalid email address"</string>
 </resources>

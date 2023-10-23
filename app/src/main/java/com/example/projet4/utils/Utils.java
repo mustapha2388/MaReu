@@ -207,7 +207,7 @@ public class Utils {
     }
 
 
-    public static void setupTextInputLayoutTextWatcher(Context context,TextInputLayout textInputLayout) {
+    public static void setupTextInputLayoutTextWatcher(Context context, TextInputLayout textInputLayout) {
         Objects.requireNonNull(textInputLayout.getEditText()).addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
