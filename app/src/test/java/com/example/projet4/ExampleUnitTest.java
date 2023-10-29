@@ -74,14 +74,7 @@ public class ExampleUnitTest {
         List<Meeting> meetingListFromJson = getMeetingList(); // Remplacez par la liste que vous attendez
 
         // Créez un MutableLiveData simulé pour la liste de chaînes
-        MutableLiveData<List<Meeting>> liveData = new MutableLiveData<>();
         liveData.setValue(meetingListFromJson);
-
-        // Définissez le comportement du repository simulé
-        when(mMeetingRepository.allMeetingsLiveData()).thenReturn(liveData);
-
-        mMeetingViewModel = new MeetingViewModel(mockApplication, mMeetingRepository);
-
 
         // Obtenez la liste de chaînes à partir du ViewModel
         List<Meeting> meetingListFromViewModel = mMeetingViewModel.allMeetingsLiveData().getValue();
