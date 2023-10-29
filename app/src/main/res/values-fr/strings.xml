@@ -7,7 +7,7 @@
 
     <string name="rooms">Salles</string>
     <string name="select_a_room_from_the_list">Selectionnez une salle dans la liste</string>
-    <string name="set_time">Régler l\'heure</string>
+    <string name="set_time">Heure</string>
     <string name="color_picker_for_choose_color">color picker pour choisir une couleur</string>
     <string name="select_a_room">Selectionnez une salle</string>
     <string name="subject">Sujet</string>

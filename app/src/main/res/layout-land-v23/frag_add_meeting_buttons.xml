@@ -16,7 +16,7 @@
             android:id="@+id/colorPickerButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:background="@color/red"
             android:contentDescription="@string/color_picker_for_choose_color"
             android:labelFor="@id/colorPickerButton" />
@@ -45,7 +45,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/rooms"
             style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="160dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             app:boxStrokeColor="@color/blue"
             app:hintTextColor="@color/blue"
